@@ -65,8 +65,11 @@ public class ASkyBlockRangeProducer implements IRangeProducer, Listener {
 	 */
 	@EventHandler
 	public void onLeaveIsland(IslandLeaveEvent e) {
+		Player player = Bukkit.getPlayer(e.getPlayer());
+		if (!group.isWDLPlayer(player)) {
+			return;
+		}
 		if (requiredPerm != PermLevel.OWNER) {
-			Player player = Bukkit.getPlayer(e.getPlayer());
 			group.removeRangesByTags(player, getIslandTag(e.getTeamLeader()));
 		}
 	}
@@ -77,9 +80,11 @@ public class ASkyBlockRangeProducer implements IRangeProducer, Listener {
 	 */
 	@EventHandler
 	public void onJoinIsland(IslandJoinEvent e) {
+		Player player = Bukkit.getPlayer(e.getPlayer());
+		if (!group.isWDLPlayer(player)) {
+			return;
+		}
 		if (requiredPerm != PermLevel.OWNER) {
-			Player player = Bukkit.getPlayer(e.getPlayer());
-
 			String tag = getIslandTag(e.getTeamLeader());
 			ProtectionRange range = getProtectionRangeForIsland(
 					e.getIslandLocation(), e.getProtectionSize());
@@ -95,6 +100,9 @@ public class ASkyBlockRangeProducer implements IRangeProducer, Listener {
 	@EventHandler
 	public void onNewIsland(IslandNewEvent e) {
 		Player player = e.getPlayer();
+		if (!group.isWDLPlayer(player)) {
+			return;
+		}
 		
 		ProtectionRange range = getProtectionRangeForIsland(
 				e.getIslandLocation(), e.getProtectionSize());
@@ -108,9 +116,12 @@ public class ASkyBlockRangeProducer implements IRangeProducer, Listener {
 	 */
 	@EventHandler
 	public void onCoopJoin(CoopJoinEvent e) {
+		Player player = Bukkit.getPlayer(e.getPlayer());
+		if (!group.isWDLPlayer(player)) {
+			return;
+		}
+
 		if (requiredPerm == PermLevel.COOP) {
-			Player player = Bukkit.getPlayer(e.getPlayer());
-			
 			String tag = getIslandTag(e.getTeamLeader());
 			ProtectionRange range = getProtectionRangeForIsland(
 					e.getIslandLocation(), e.getProtectionSize());
@@ -125,9 +136,12 @@ public class ASkyBlockRangeProducer implements IRangeProducer, Listener {
 	 */
 	@EventHandler
 	public void onCoopLeave(CoopLeaveEvent e) {
+		Player player = Bukkit.getPlayer(e.getPlayer());
+		if (!group.isWDLPlayer(player)) {
+			return;
+		}
+
 		if (requiredPerm == PermLevel.COOP) {
-			Player player = Bukkit.getPlayer(e.getPlayer());
-			
 			group.removeRangesByTags(player, getIslandTag(e.getIslandOwner()));
 		}
 	}
