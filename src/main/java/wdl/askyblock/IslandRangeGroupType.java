@@ -8,19 +8,25 @@ import org.bukkit.plugin.Plugin;
 import wdl.range.IRangeGroup;
 import wdl.range.IRangeGroupType;
 
-public class ASkyBlockRangeGroupType implements
-		IRangeGroupType<ASkyBlockRangeProducer> {
+public class IslandRangeGroupType<T extends IslandRangeProducer> implements
+		IRangeGroupType<T> {
+	/** Constructor for the range producer class */
+	public static interface Supplier<T> {
+		public T make(IRangeGroup group, PermLevel level);
+	}
 	private final Plugin plugin;
+	private final Supplier<T> supplier;
 
-	public ASkyBlockRangeGroupType(Plugin plugin) {
+	public IslandRangeGroupType(Plugin plugin, Supplier<T> supplier) {
 		this.plugin = plugin;
+		this.supplier = supplier;
 	}
 	
 	@Override
-	public ASkyBlockRangeProducer createRangeProducer(IRangeGroup group,
+	public T createRangeProducer(IRangeGroup group,
 			ConfigurationSection config) {
 		PermLevel level = PermLevel.parse(config.getString("requiredPerm"));
-		ASkyBlockRangeProducer producer = new ASkyBlockRangeProducer(group, level);
+		T producer = supplier.make(group, level);
 		plugin.getServer().getPluginManager().registerEvents(producer, plugin);
 		
 		return producer;

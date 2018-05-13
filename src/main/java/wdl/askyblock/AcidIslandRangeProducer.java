@@ -8,24 +8,24 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 
-import com.wasteofplastic.askyblock.ASkyBlockAPI;
-import com.wasteofplastic.askyblock.Settings;
-import com.wasteofplastic.askyblock.events.CoopJoinEvent;
-import com.wasteofplastic.askyblock.events.CoopLeaveEvent;
-import com.wasteofplastic.askyblock.events.IslandJoinEvent;
-import com.wasteofplastic.askyblock.events.IslandLeaveEvent;
-import com.wasteofplastic.askyblock.events.IslandNewEvent;
+import com.wasteofplastic.acidisland.ASkyBlockAPI;
+import com.wasteofplastic.acidisland.Settings;
+import com.wasteofplastic.acidisland.events.CoopJoinEvent;
+import com.wasteofplastic.acidisland.events.CoopLeaveEvent;
+import com.wasteofplastic.acidisland.events.IslandJoinEvent;
+import com.wasteofplastic.acidisland.events.IslandLeaveEvent;
+import com.wasteofplastic.acidisland.events.IslandNewEvent;
 
 import wdl.range.IRangeGroup;
 
 /**
- * Range producer that specifically targets ASkyBlock.
+ * Range producer that specifically targets AcidIsland.
  * The main difference is the imports.
  */
-public class ASkyBlockRangeProducer extends IslandRangeProducer {
+public class AcidIslandRangeProducer extends IslandRangeProducer {
 	private final ASkyBlockAPI api;
 
-	public ASkyBlockRangeProducer(IRangeGroup group, PermLevel requiredPerm) {
+	public AcidIslandRangeProducer(IRangeGroup group, PermLevel requiredPerm) {
 		super(group, requiredPerm);
 		api = ASkyBlockAPI.getInstance();
 	}
