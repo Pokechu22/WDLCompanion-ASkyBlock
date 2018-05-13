@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pokechu22.plugins</groupId>
     <artifactId>WDLCompanionASkyblockSupport</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>ASkyblock support for WDLCompanion</name>
     <description>Adds a new Chunk Override type, 'ASkyBlock island', which allows a player to use World Downloader on their own island.</description>
 

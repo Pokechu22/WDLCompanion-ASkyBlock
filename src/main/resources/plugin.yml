@@ -1,6 +1,6 @@
 name: WDLCompanionASkyBlockSupport
 main: wdl.askyblock.ASkyBlockSupportPlugin
-version: 0.0.2
+version: 0.0.3-SNAPSHOT
 author: Pokechu22
 depend: [WDLCompanion]
 softdepend: [ASkyBlock, AcidIsland]
